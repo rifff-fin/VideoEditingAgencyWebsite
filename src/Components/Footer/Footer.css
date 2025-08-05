@@ -1,0 +1,37 @@
+.footer {
+    margin: 25px;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #d5ffb4;
+    padding: 10px 1px;
+}
+
+/* Fix list items */
+.footer ul li {
+    display: inline-block;
+    margin-left: 2px;
+    list-style: none;
+    padding: 10px;
+}
+
+/* Fix paragraph styling */
+.footer p {
+    display: inline-block;
+    padding: 10px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 800px) {
+    .footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .footer ul {
+        margin-bottom: 20px;
+        padding: 0;
+    }
+    .footer ul li {
+        margin-left: 0;
+    }
+}

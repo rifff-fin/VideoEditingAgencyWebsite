@@ -1,0 +1,81 @@
+.projects {
+  margin: 80px auto;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: none;
+}
+
+.project {
+  flex-basis: 31%;
+  position: relative;
+  overflow: hidden; /* Ensures the caption stays within the bounds of the image */
+  border-radius: 10px; /* Rounded corners for consistency */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 4 / 3; /* Ensures all projects have a consistent aspect ratio */
+  background-color: #f3f3f3; /* Placeholder background in case the image doesn't load */
+}
+
+.project img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the space without distortion */
+  border-radius: 10px;
+  display: block;
+}
+
+.caption {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 10px;
+  background: #0e2909; /* Slightly darker for better visibility */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #fff;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.4s ease, transform 0.4s ease; /* Smooth transition for opacity and transform */
+  transform: translateY(20%); /* Initially hide the caption by moving it down */
+}
+
+.caption img {
+  width: 60px; /* Fixed size for consistency */
+  height: auto; /* Maintain aspect ratio */
+  margin-bottom: 10px; /* Space between the icon and text */
+}
+
+.caption p {
+  font-size: 1rem; /* Size of the text */
+  font-style: italic; /* Adds a sleek italic style */
+  letter-spacing: 2px; /* Adds spacing between letters for a modern look */
+  color: #f0f0f0; /* Slightly off-white for softer contrast */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Adds a subtle shadow effect */
+  text-transform: uppercase; /* Makes the text uppercase for a sharp, modern style */
+  margin: 0; /* Ensure no extra spacing */
+}
+
+.project:hover .caption {
+  opacity: 1;
+  transform: translateY(0); /* Bring the caption into place on hover */
+}
+
+
+@media (max-width: 650px) {
+  .projects {
+    flex-direction: column; 
+
+
+  }
+  .project {
+    flex-basis: 100%; 
+    margin-bottom: 20px; 
+  }
+}

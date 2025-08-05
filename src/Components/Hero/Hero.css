@@ -1,0 +1,59 @@
+@font-face {
+    font-family: "ThaiFont";
+    src: url("../../assets/fonts/Oblivion.otf") format("opentype"),
+         url("../../assets/fonts/Oblivion.ttf") format("truetype"),
+         url("../../assets/fonts/Oblivion.woff") format("woff");
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "ThaiFont", sans-serif;
+}
+
+.hero {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: background 0.1s ease-out; /* Smooth background transition */
+}
+
+.tagline {
+    text-align: center;
+    color: white;
+    font-size: 2rem;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.tagline.fade-in {
+    opacity: 1;
+}
+
+/* Button Styling */
+.button-container {
+    margin-top: 20px; /* Adds space between text and button */
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}

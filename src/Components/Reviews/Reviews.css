@@ -1,0 +1,108 @@
+.reviews-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+  background-color: transparent;
+}
+
+.reviews-wrapper {
+  display: flex;
+  gap: 30px;
+  width: max-content;
+  animation: scroll 50s linear infinite; /* Slow down the scroll to 50 seconds */
+}
+
+.review-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  min-width: 500px;
+  max-width: 600px;
+  border-radius: 15px;
+  transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+  background: rgba(50, 50, 50, 0.4);
+  text-align: center;
+  position: relative;
+  border: 2px solid white;
+  animation: glowing-border 2s linear infinite;
+  z-index: 1; /* Base z-index */
+}
+
+@keyframes glowing-border {
+  0% {
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 1);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  }
+}
+
+.review-card:hover {
+  transform: scale(1.1);
+  background: rgba(50, 50, 50, 0.7);
+  z-index: 10; /* Ensure the hovered card stays on top */
+  max-width: 700px;
+}
+
+.review-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.user-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+
+.review-info {
+  text-align: left;
+}
+
+.review-info h3 {
+  font-size: 22px;
+  color: white;
+  margin: 0;
+}
+
+.location {
+  font-size: 16px;
+  color: #ccc;
+}
+
+.review-text {
+  font-size: 18px;
+  color: white;
+  max-width: 500px;
+  padding: 15px 0;
+  transition: max-height 0.3s ease-in-out;
+  overflow: hidden;
+  max-height: 80px;
+  text-overflow: ellipsis;
+}
+
+.review-card:hover .review-text {
+  max-height: 300px;
+  overflow: visible;
+  white-space: normal;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
