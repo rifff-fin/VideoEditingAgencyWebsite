@@ -1,59 +1,134 @@
-@font-face {
-    font-family: "ThaiFont";
-    src: url("../../assets/fonts/Oblivion.otf") format("opentype"),
-         url("../../assets/fonts/Oblivion.ttf") format("truetype"),
-         url("../../assets/fonts/Oblivion.woff") format("woff");
-}
-
-body {
-    margin: 0;
-    padding: 0;
-    font-family: "ThaiFont", sans-serif;
-}
-
 .hero {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    transition: background 0.1s ease-out; /* Smooth background transition */
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at 50% 50%, rgba(50, 255, 50, 0.15), rgba(0, 10, 0, 1));
+  overflow: hidden;
+  padding: 0 5%;
 }
 
-.tagline {
-    text-align: center;
-    color: white;
-    font-size: 2rem;
+.hero-gradient {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, transparent 0%, #000000 70%);
+  animation: pulseGradient 8s ease-in-out infinite;
+}
+
+@keyframes pulseGradient {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: 700;
+  text-align: center;
+  color: white;
+  margin-bottom: 40px;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 1s ease;
+  background: linear-gradient(135deg, #ffffff 0%, #90EE90 50%, #ffffff 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 4s ease-in-out infinite;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-title.fade-in {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.cursor-blink {
+  animation: blink 0.8s step-end infinite;
+}
+
+@keyframes blink {
+  50% {
     opacity: 0;
-    transition: opacity 1s ease-in-out;
+  }
 }
 
-.tagline.fade-in {
-    opacity: 1;
+.hero-btn {
+  position: relative;
+  padding: 18px 45px;
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, rgba(144, 238, 144, 0.8), rgba(43, 49, 5, 0.6));
+  border: 2px solid rgba(144, 238, 144, 0.3);
+  border-radius: 50px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  z-index: 1;
+  box-shadow: 0 8px 30px rgba(144, 238, 144, 0.3);
+  animation: floatButton 3s ease-in-out infinite;
 }
 
-/* Button Styling */
-.button-container {
-    margin-top: 20px; /* Adds space between text and button */
+@keyframes floatButton {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
-.btn {
-    display: flex;
-    align-items: center;
-    padding: 10px 20px;
-    background: rgba(255, 255, 255, 0.1);
-    border: none;
-    color: white;
-    cursor: pointer;
+.hero-btn:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 15px 50px rgba(144, 238, 144, 0.5);
+  background: linear-gradient(135deg, #90EE90, rgba(43, 49, 5, 0.8));
+}
+
+.btn-glow {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.5s ease;
+}
+
+.hero-btn:hover .btn-glow {
+  left: 100%;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 90vh;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+
+  .hero-btn {
+    padding: 14px 35px;
     font-size: 18px;
-    backdrop-filter: blur(10px);
-    border-radius: 10px;
-    transition: 0.3s;
-}
-
-.btn:hover {
-    background: rgba(255, 255, 255, 0.3);
+  }
 }

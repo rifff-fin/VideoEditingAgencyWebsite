@@ -1,37 +1,105 @@
 .footer {
-    margin: 25px;
-    display: flex;
-    justify-content: space-between;
-    border-top: 1px solid #d5ffb4;
-    padding: 10px 1px;
+  padding: 30px 10%;
+  background: linear-gradient(180deg, #000000, #0a0a0a);
+  border-top: 1px solid rgba(144, 238, 144, 0.2);
+  position: relative;
+  overflow: hidden;
 }
 
-/* Fix list items */
-.footer ul li {
-    display: inline-block;
-    margin-left: 2px;
-    list-style: none;
-    padding: 10px;
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(144, 238, 144, 0.6), transparent);
+  animation: shimmer 3s ease-in-out infinite;
 }
 
-/* Fix paragraph styling */
-.footer p {
-    display: inline-block;
-    padding: 10px;
+@keyframes shimmer {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
-/* Responsive Design */
-@media screen and (max-width: 800px) {
-    .footer {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-    .footer ul {
-        margin-bottom: 20px;
-        padding: 0;
-    }
-    .footer ul li {
-        margin-left: 0;
-    }
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-copyright {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 15px;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.footer-copyright:hover {
+  color: #90EE90;
+}
+
+.footer-links {
+  display: flex;
+  list-style: none;
+  gap: 40px;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-links li {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.footer-links li::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #90EE90, transparent);
+  transition: width 0.3s ease;
+}
+
+.footer-links li:hover {
+  color: #90EE90;
+  transform: translateY(-2px);
+}
+
+.footer-links li:hover::after {
+  width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .footer {
+    padding: 25px 5%;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .footer-links {
+    gap: 25px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .footer-copyright,
+  .footer-links li {
+    font-size: 14px;
+  }
 }

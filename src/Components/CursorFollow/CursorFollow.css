@@ -1,0 +1,20 @@
+.cursor-follow {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s ease-out;
+}
+
+.cursor-follow.moving {
+  transform: translate(-50%, -50%) scale(1.5);
+}
+
+.cursor-glow {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(144, 238, 144, 0.6), transparent);
+  filter: blur(8px);
+  transition: all 0.15s ease-out;
+}

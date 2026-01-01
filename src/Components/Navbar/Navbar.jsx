@@ -1,45 +1,56 @@
 import React, { useEffect, useState } from 'react';
 import './Navbar.css';
 import logo from '../../assets/logo.png';
-import { Link } from 'react-scroll';
 import menu_icon from '../../assets/menu-icon.png';
 
 const Navbar = () => {
   const [sticky, setSticky] = useState(false);
+  const [mobileMenu, setMobileMenu] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setSticky(window.scrollY > 510); // Simplified condition
+      setSticky(window.scrollY > 50);
     };
-
     window.addEventListener('scroll', handleScroll);
-
-    // Cleanup function to remove the event listener
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  const [mobileMenu, setMobileMenu] = useState(false);
-  const toggleMenu = () => {
-    mobileMenu? setMobileMenu(false): setMobileMenu(true);
 
-  }
+  const toggleMenu = () => {
+    setMobileMenu(!mobileMenu);
+  };
+
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      setMobileMenu(false);
+    }
+  };
+
   return (
-    <nav className={`container${sticky ? ' dark-nav' : ''}`}>
-      <Link to="hero" smooth={true} offset={0} duration={500}>
-        <img src={logo} alt="Company Logo" className="logo" />
-      </Link>
+    <nav className={`navbar ${sticky ? 'sticky' : ''}`}>
+      <div className="nav-logo" onClick={() => scrollToSection('hero')}>
+        <img src={logo} alt="Artographica Logo" />
+      </div>
       
-      <ul className={ mobileMenu? '':'hide-mobile-menu'}>
-        <li><Link to="hero" smooth={true} offset={0} duration={500}>Home</Link></li>
-        <li><Link to="simple-gallery" smooth={true} offset={-300} duration={500}>Projects</Link></li>
-        <li><Link to="projects" smooth={true} offset={-390} duration={500}>What We Provide</Link></li>
-        <li><Link to="about" smooth={true} offset={-260} duration={500}>Who We Are</Link></li>
+      <ul className={mobileMenu ? 'nav-menu active' : 'nav-menu'}>
+        <li onClick={() => scrollToSection('hero')}>Home</li>
+        <li onClick={() => scrollToSection('projects')}>Projects</li>
+        <li onClick={() => scrollToSection('services')}>What We Provide</li>
+        <li onClick={() => scrollToSection('about')}>Who We Are</li>
         <li>
-          <Link to="contact" smooth={true} offset={0} duration={500} className="btn">Contact Us</Link>
+          <button className="nav-btn" onClick={() => scrollToSection('contact')}>
+            Contact Us
+          </button>
         </li>
       </ul>
-      <img src={menu_icon} alt="Menu Icon" className="menu-icon" onClick={toggleMenu}/>
+      
+      <img 
+        src={menu_icon} 
+        alt="Menu" 
+        className="menu-icon" 
+        onClick={toggleMenu}
+      />
     </nav>
   );
 };
